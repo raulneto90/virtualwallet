@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import '@shared/database';
 import express from 'express';
 
 import routes from '../routes';
