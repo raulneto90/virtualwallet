@@ -1,3 +1,5 @@
+import { inject, injectable } from 'tsyringe';
+
 import Transaction from '../infra/typeorm/entities/Transaction';
 import ITransactionsRepository from '../repositories/ITransactionsRepository';
 
@@ -7,8 +9,12 @@ interface IRequest {
   type: 'income' | 'outcome';
 }
 
+@injectable()
 export default class CreateTransactionService {
-  constructor(private transactionsRepository: ITransactionsRepository) {}
+  constructor(
+    @inject('TransactionsRepository')
+    private transactionsRepository: ITransactionsRepository,
+  ) {}
 
   async execute({ title, type, value }: IRequest): Promise<Transaction> {
     const newTransaction = {
