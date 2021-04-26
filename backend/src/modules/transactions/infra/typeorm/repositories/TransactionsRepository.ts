@@ -33,13 +33,13 @@ export default class TransactionsRepository implements ITransactionsRepository {
     const income = transactionsList
       .filter(transaction => transaction.type === 'income')
       .reduce((accumulator, transaction) => {
-        return accumulator + transaction.value;
+        return accumulator + Number(transaction.value);
       }, 0);
 
     const outcome = transactionsList
       .filter(transaction => transaction.type === 'outcome')
       .reduce((accumulator, transaction) => {
-        return accumulator + transaction.value;
+        return accumulator + Number(transaction.value);
       }, 0);
 
     return {

@@ -5,6 +5,7 @@ import TransactionController from '../controllers/TransactionController';
 const transactionRouter = Router();
 const transactionController = new TransactionController();
 
-transactionRouter.use('/', transactionController.create);
+transactionRouter.post('/', transactionController.create);
+transactionRouter.get('/', transactionController.list);
 
 export default transactionRouter;
