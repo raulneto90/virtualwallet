@@ -1,4 +1,4 @@
-import { getRepository, Repository } from 'typeorm';
+import { Between, getRepository, Repository } from 'typeorm';
 
 import ICreateTransactionDTO from '@modules/transactions/dtos/ICreateTransactionDTO';
 import IGetBalanceDTO from '@modules/transactions/dtos/IGetBalanceDTO';
@@ -23,6 +23,14 @@ export default class TransactionsRepository implements ITransactionsRepository {
 
   async listAll(): Promise<Transaction[]> {
     const transactions = await this.repository.find();
+
+    return transactions;
+  }
+
+  async listByPeriod(startDate: Date, endDate: Date): Promise<Transaction[]> {
+    const transactions = await this.repository.find({
+      created_at: Between(startDate, endDate),
+    });
 
     return transactions;
   }

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { FiDollarSign } from 'react-icons/fi';
-import { Bar } from 'react-chartjs-2';
 
 import Header from '../../components/Header';
 
@@ -11,7 +10,6 @@ import {
   Transactions,
   TableContainer,
   ListType,
-  Chart,
 } from './styles';
 
 import api from '../../services/api';
