@@ -1,22 +1,13 @@
 import React from 'react';
 import { FiDollarSign } from 'react-icons/fi';
+import Header from '../../components/Header';
 
-import { Container, Menu, TransactionOverview, Card } from './styles';
+import { Container, TransactionOverview, Card } from './styles';
 
 const Dashboard: React.FC = () => {
   return (
     <Container>
-      <header>
-        <Menu>
-          <ul>
-            <li>
-              <a href="teste">Dashboard</a>
-              <a href="teste">Nova transação</a>
-              <a href="teste">Relatórios</a>
-            </li>
-          </ul>
-        </Menu>
-      </header>
+      <Header />
       <main>
         <TransactionOverview>
           <Card>
@@ -31,6 +22,6 @@ const Dashboard: React.FC = () => {
       </main>
     </Container>
   );
-}
+};
 
 export default Dashboard;
