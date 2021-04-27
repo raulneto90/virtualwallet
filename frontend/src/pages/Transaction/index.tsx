@@ -35,7 +35,7 @@ const Transaction: React.FC = () => {
       setValue('');
       setType('');
     },
-    [category, comment, type, value],
+    [category, comment, type, value, history],
   );
 
   return (
