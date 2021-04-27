@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FiDollarSign } from 'react-icons/fi';
+import { Bar } from 'react-chartjs-2';
 
 import Header from '../../components/Header';
 
@@ -9,6 +10,8 @@ import {
   Card,
   Transactions,
   TableContainer,
+  ListType,
+  Chart,
 } from './styles';
 
 import api from '../../services/api';
@@ -33,6 +36,8 @@ interface IBalance {
 }
 
 const Dashboard: React.FC = () => {
+  const [chart, setChart] = useState(false);
+  const [list, setList] = useState(true);
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
   const [balance, setBalance] = useState<IBalance>(Object);
 
@@ -79,7 +84,14 @@ const Dashboard: React.FC = () => {
         <Transactions>
           <h2>Histórico de transações</h2>
 
-          {transactions && (
+          <ListType>
+            <button type="button" className={list ? 'active' : ''}>
+              Lista
+            </button>
+            <button type="button">Gráfico</button>
+          </ListType>
+
+          {transactions && !!list && (
             <TableContainer>
               <table>
                 <thead>

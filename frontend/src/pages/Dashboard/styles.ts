@@ -34,13 +34,43 @@ export const Card = styled.div`
   }
 `;
 
+export const ListType = styled.div`
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    background: #f9cc5e;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+
+    transition: 0.2s;
+
+    &:hover {
+      background: #ffbc1a;
+    }
+
+    & + button {
+      margin-left: 5px;
+    }
+  }
+
+  button.active {
+    background: #ffbc1a;
+  }
+`;
+
 export const Transactions = styled.div`
   max-width: 1200px;
   margin: 32px auto;
 `;
 
 export const TableContainer = styled.section`
-  margin-top: 64px;
+  margin-top: 12px;
   table {
     width: 100%;
     border-spacing: 0 8px;
