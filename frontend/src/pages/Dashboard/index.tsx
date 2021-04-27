@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FiDollarSign } from 'react-icons/fi';
 
+import { ExportToCsv } from 'export-to-csv';
 import Header from '../../components/Header';
 
 import {
@@ -15,6 +16,7 @@ import {
 import api from '../../services/api';
 
 import formatValue from '../../utils/formatValue';
+import generateCSV from '../../utils/generateCSV';
 
 interface ITransaction {
   id: string;
@@ -64,6 +66,14 @@ const Dashboard: React.FC = () => {
     loadTransactions();
   }, []);
 
+  const handleGenerateCSV = useCallback(() => {
+    const { data, options } = generateCSV(transactions);
+
+    const csvExporter = new ExportToCsv(options);
+
+    csvExporter.generateCsv(data);
+  }, [transactions]);
+
   return (
     <Container>
       <Header />
@@ -88,6 +98,10 @@ const Dashboard: React.FC = () => {
             </button>
             <button type="button">Gráfico</button>
           </ListType>
+
+          <button type="button" onClick={handleGenerateCSV}>
+            Exportar CSV
+          </button>
 
           {transactions && !!list && (
             <TableContainer>

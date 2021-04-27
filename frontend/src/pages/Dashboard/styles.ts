@@ -67,6 +67,25 @@ export const ListType = styled.div`
 export const Transactions = styled.div`
   max-width: 1200px;
   margin: 32px auto;
+
+  button {
+    background: #f9cc5e;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+
+    transition: 0.2s;
+
+    &:hover {
+      background: #ffbc1a;
+    }
+
+    & + button {
+      margin-left: 5px;
+    }
+  }
 `;
 
 export const TableContainer = styled.section`

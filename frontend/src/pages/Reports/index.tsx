@@ -1,5 +1,5 @@
-import React, { FormEvent, useCallback, useEffect, useState } from 'react';
-import { CSVLink } from 'react-csv';
+import { ExportToCsv } from 'export-to-csv';
+import React, { FormEvent, useCallback, useState } from 'react';
 import Header from '../../components/Header';
 import api from '../../services/api';
 import formatValue from '../../utils/formatValue';
@@ -25,26 +25,9 @@ interface ITransaction {
   formattedDate: string;
 }
 
-interface ICSVFile {
-  data: {
-    title: string;
-    value: string;
-    category: string;
-    date: string;
-  }[];
-
-  headers: {
-    label: string;
-    key: string;
-  }[];
-
-  filename: string;
-}
-
 const Reports: React.FC = () => {
   const [startDate, setStartDate] = useState<string>();
   const [endDate, setEndDate] = useState<string>();
-  const [csvFile, setCsvFile] = useState<ICSVFile>();
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
 
   const handleSubmit = useCallback(
@@ -69,6 +52,14 @@ const Reports: React.FC = () => {
     },
     [startDate, endDate],
   );
+
+  const handleGenerateCSV = useCallback(() => {
+    const { data, options } = generateCSV(transactions);
+
+    const csvExporter = new ExportToCsv(options);
+
+    csvExporter.generateCsv(data);
+  }, [transactions]);
 
   return (
     <Container>
@@ -100,6 +91,10 @@ const Reports: React.FC = () => {
       {transactions.length > 0 && (
         <Transactions>
           <h2>Histórico de transações</h2>
+
+          <button type="button" onClick={handleGenerateCSV}>
+            Exportar CSV
+          </button>
 
           <TableContainer>
             <table>

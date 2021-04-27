@@ -19,12 +19,12 @@ interface IResponse {
     date: string;
   }[];
 
-  headers: {
-    label: string;
-    key: string;
-  }[];
-
-  filename: string;
+  options: {
+    filename: string;
+    showLabels: boolean;
+    useKeysAsHeaders: boolean;
+    headers: string[];
+  };
 }
 
 export default function generateCSV(transactions: ITransaction[]): IResponse {
@@ -54,9 +54,15 @@ export default function generateCSV(transactions: ITransaction[]): IResponse {
     date: transaction.formattedDate,
   }));
 
+  const options = {
+    filename: 'transactions',
+    showLabels: true,
+    useKeysAsHeaders: false,
+    headers: ['Título', 'Valor', 'Categoria', 'Data'],
+  };
+
   return {
     data,
-    headers,
-    filename: 'Transactions.csv',
+    options,
   };
 }
