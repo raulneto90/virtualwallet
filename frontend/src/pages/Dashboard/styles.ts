@@ -16,3 +16,7 @@ export const TransactionOverview = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const TransactionList = styled.div`
+  margin-top: 64px;
+`;
