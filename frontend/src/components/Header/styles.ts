@@ -16,16 +16,21 @@ export const Menu = styled.nav`
   padding-bottom: 64px;
 
   a {
+    padding: 12px;
+    border-radius: 5px;
     background-color: var(--button-bg);
     color: var(--white);
     font-size: 14px;
-    padding: 12px;
-    border-radius: 5px;
+    font-weight: 500;
 
     transition: 0.2s;
 
     &:hover {
       background-color: var(--button2-bg);
+    }
+
+    & + a {
+      margin-left: 20px;
     }
   }
 `;

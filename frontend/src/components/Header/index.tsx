@@ -7,6 +7,7 @@ const Header: React.FC = () => (
     <Content>
       <Menu>
         <a href="#teste">Nova transação</a>
+        <a href="#teste">Relatórios</a>
       </Menu>
     </Content>
   </Container>
