@@ -40,6 +40,12 @@ export default class CreateTransactionService {
       category_id = newCategory.id;
     }
 
+    const { total } = await this.transactionsRepository.getBalance();
+
+    if (total < value) {
+      throw new Error('Insuficient funds!');
+    }
+
     const newTransaction = {
       title,
       type,
