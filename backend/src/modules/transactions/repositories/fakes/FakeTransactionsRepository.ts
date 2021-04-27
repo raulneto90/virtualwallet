@@ -38,8 +38,6 @@ export default class FakeTransactionsRepository
       }, 0);
 
     return {
-      income,
-      outcome,
       total: income - outcome,
     };
   }

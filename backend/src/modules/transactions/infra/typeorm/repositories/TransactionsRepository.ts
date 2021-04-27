@@ -43,8 +43,6 @@ export default class TransactionsRepository implements ITransactionsRepository {
       }, 0);
 
     return {
-      income,
-      outcome,
       total: income - outcome,
     };
   }
