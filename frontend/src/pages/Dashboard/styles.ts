@@ -39,45 +39,43 @@ export const Transactions = styled.div`
   margin: 32px auto;
 `;
 
-export const TransactionsList = styled.table`
-  width: 100%;
-  max-width: 1200px;
-  margin: 20px auto;
-
-  thead {
+export const TableContainer = styled.section`
+  margin-top: 64px;
+  table {
     width: 100%;
+    border-spacing: 0 8px;
 
-    tr {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
+    th {
+      color: #212228;
+      font-weight: normal;
+      padding: 20px 32px;
+      text-align: left;
+      font-size: 16px;
+      line-height: 24px;
+    }
 
-      th {
+    td {
+      padding: 20px 32px;
+      border: 0;
+      background: #fff;
+      font-size: 16px;
+      font-weight: normal;
+      color: #212228;
+      &.title {
         color: #212228;
-        font-weight: lighter;
+      }
+      &.income {
+        color: #12a454;
+      }
+      &.outcome {
+        color: #e83f5b;
       }
     }
-  }
-
-  tbody {
-    width: 100%;
-
-    tr {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #fff;
-      border-radius: 5px;
-      padding: 12px 20px;
-
-      td {
-        font-weight: regular;
-      }
-
-      & + tr {
-        margin-top: 8px;
-      }
+    td:first-child {
+      border-radius: 8px 0 0 8px;
+    }
+    td:last-child {
+      border-radius: 0 8px 8px 0;
     }
   }
 `;

@@ -8,7 +8,7 @@ import {
   TransactionOverview,
   Card,
   Transactions,
-  TransactionsList,
+  TableContainer,
 } from './styles';
 
 import api from '../../services/api';
@@ -20,6 +20,9 @@ interface ITransaction {
   title: string;
   type: 'income' | 'outcome';
   value: number;
+  category: {
+    name: string;
+  };
   created_at: Date;
   formattedValue: string;
   formattedDate: string;
@@ -30,7 +33,7 @@ interface IBalance {
 }
 
 const Dashboard: React.FC = () => {
-  const [transactions, setTransactions] = useState<ITransaction[]>(Object);
+  const [transactions, setTransactions] = useState<ITransaction[]>([]);
   const [balance, setBalance] = useState<IBalance>(Object);
 
   useEffect(() => {
@@ -76,26 +79,34 @@ const Dashboard: React.FC = () => {
         <Transactions>
           <h2>Histórico de transações</h2>
 
-          <TransactionsList>
-            <thead>
-              <tr>
-                <th>Título</th>
-                <th>Valor</th>
-                <th>Categoria</th>
-                <th>Data</th>
-              </tr>
-            </thead>
-            <tbody>
-              {transactions.map(transaction => (
-                <tr>
-                  <td>{transaction.title}</td>
-                  <td>{transaction.formattedValue}</td>
-                  <td>Teste</td>
-                  <td>{transaction.formattedDate}</td>
-                </tr>
-              ))}
-            </tbody>
-          </TransactionsList>
+          {transactions && (
+            <TableContainer>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Título</th>
+                    <th>Preço</th>
+                    <th>Categoria</th>
+                    <th>Data</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {transactions.map(transaction => (
+                    <tr key={transaction.id}>
+                      <td className="title">{transaction.title}</td>
+                      <td className={transaction.type}>
+                        {transaction.type === 'outcome' && ' - '}
+                        {transaction.formattedValue}
+                      </td>
+                      <td>{transaction.category.name}</td>
+                      <td>{transaction.formattedDate}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </TableContainer>
+          )}
         </Transactions>
       </main>
     </Container>

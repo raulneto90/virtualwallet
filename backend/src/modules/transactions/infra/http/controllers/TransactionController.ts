@@ -6,11 +6,16 @@ import ListTransactionsService from '@modules/transactions/services/ListTransact
 
 export default class TransactionController {
   async create(request: Request, response: Response): Promise<Response> {
-    const { title, value, type } = request.body;
+    const { title, value, type, category } = request.body;
 
     const createTransaction = container.resolve(CreateTransactionService);
 
-    const transaction = await createTransaction.execute({ title, value, type });
+    const transaction = await createTransaction.execute({
+      title,
+      value,
+      type,
+      category,
+    });
 
     return response.status(201).json(transaction);
   }
