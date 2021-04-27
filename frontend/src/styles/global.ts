@@ -3,10 +3,11 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
   :root {
     --bg: #1F1D2B;
-    --card-bg: #353245;
-    --button-bg: #72699F;
+    --card-bg: #5429CC;
+    --button-bg: #6933FF;
     --button2-bg: #7957DA;
     --white: #fff;
+    --title: #363F5F;
   }
 
   * {
