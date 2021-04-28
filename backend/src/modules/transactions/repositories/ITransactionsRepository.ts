@@ -1,3 +1,5 @@
+import { SelectQueryBuilder } from 'typeorm';
+
 import ICreateTransactionDTO from '../dtos/ICreateTransactionDTO';
 import IGetBalanceDTO from '../dtos/IGetBalanceDTO';
 import Transaction from '../infra/typeorm/entities/Transaction';

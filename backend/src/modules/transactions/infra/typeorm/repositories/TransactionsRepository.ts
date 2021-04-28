@@ -1,4 +1,9 @@
-import { Between, getRepository, Repository } from 'typeorm';
+import {
+  Between,
+  getRepository,
+  Repository,
+  SelectQueryBuilder,
+} from 'typeorm';
 
 import ICreateTransactionDTO from '@modules/transactions/dtos/ICreateTransactionDTO';
 import IGetBalanceDTO from '@modules/transactions/dtos/IGetBalanceDTO';
